@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhineka Tunggal Ika - Data dalam Seni dan Kreativitas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-light: #e1effe;
+            --secondary: #c2410c;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #0e3ec9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.05) 0%, rgba(194, 65, 12, 0.05) 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 45%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            opacity: 0.95;
+        }
+
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Provinces Section */
+        .provinces-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: var(--white);
+            border: 1px solid #e5e7eb;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .provinces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .province-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .province-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .province-card:hover .card-header img {
+            transform: scale(1.05);
+        }
+
+        .province-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .card-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            padding: 1rem 1.5rem;
+        }
+
+        /* Visualization Section - Perbaikan Utama */
+        .visualization {
+            background-color: var(--primary-light);
+            padding: 4rem 0;
+        }
+
+        .vis-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .vis-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .vis-chart {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            overflow: visible;
+        }
+
+        .chart-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .chart-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .chart {
+            min-width: 600px;
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            min-width: 100px;
+        }
+
+        .bars {
+            display: flex;
+            gap: 0.8rem;
+            height: 100%;
+            align-items: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .bar {
+            width: 35px;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 0.8s ease;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .region-label {
+            position: absolute;
+            bottom: -50px;
+            font-size: 0.9rem;
+            color: var(--dark);
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .legend-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .color-1 {
+            background: linear-gradient(to top, var(--primary), var(--primary));
+        }
+        .color-2 {
+            background: linear-gradient(to top, #4f46e5, #4f46e5);
+        }
+        .color-3 {
+            background: linear-gradient(to top, var(--secondary), var(--secondary));
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-desc {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .creator-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .creator-details h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .creator-details p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 1200px) {
+            .vis-container {
+                flex-direction: column;
+            }
+            
+            .vis-content, .vis-chart {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-pattern {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 70%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hero {
+                padding-top: 5rem;
+            }
+            
+            .hero-pattern {
+                width: 100%;
+                height: 40%;
+                top: auto;
+                bottom: 0;
+                clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .chart {
+                min-width: 550px;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .provinces-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart {
+                min-width: 500px;
+                gap: 0.8rem;
+            }
+
+            .bar {
+                width: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chart {
+                min-width: 450px;
+                gap: 0.6rem;
+            }
+
+            .bar {
+                width: 25px;
+            }
+            
+            .bar-value {
+                font-size: 0.8rem;
+            }
+            
+            .bar-label, .region-label {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Bhineka<span>Tunggal</span>Ika</a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#provinces">Provinsi</a></li>
+                    <li><a href="#visualization">Visualisasi</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Menyatukan <span>Keragaman</span> dalam Data dan Kreativitas</h1>
+                <p class="hero-subtitle">Eksplorasi keindahan budaya Indonesia melalui pendekatan minimalis yang memadukan data dengan seni, menciptakan pengalaman digital yang fungsional dan estetis.</p>
+                <div class="hero-btns">
+                    <a href="#provinces" class="btn">Jelajahi Data</a>
+                    <a href="#visualization" class="btn btn-outline">Lihat Visualisasi</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-pattern">
+            <div class="pattern-overlay"></div>
+        </div>
+    </section>
+
+    <!-- Provinces Section -->
+    <section class="provinces" id="provinces">
+        <div class="container">
+            <h2 class="section-title">Keberagaman <span>Provinsi</span> Indonesia</h2>
+            <p class="section-subtitle">Data keragaman budaya dari berbagai provinsi di Indonesia, disajikan secara minimalis dan informatif.</p>
+            
+            <div class="provinces-filter">
+                <button class="filter-btn active">Semua</button>
+                <button class="filter-btn">Sumatera</button>
+                <button class="filter-btn">Jawa</button>
+                <button class="filter-btn">Kalimantan</button>
+                <button class="filter-btn">Sulawesi</button>
+                <button class="filter-btn">Papua & Maluku</button>
+            </div>
+            
+            <div class="provinces-grid">
+                <!-- Province cards will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization Section - Perbaikan Utama -->
+    <section class="visualization" id="visualization">
+        <div class="container">
+            <h2 class="section-title">Visualisasi <span>Data</span> Budaya</h2>
+            <p class="section-subtitle">Representasi grafis dari keragaman budaya Indonesia dalam bentuk yang minimalis dan informatif.</p>
+            
+            <div class="vis-container">
+                <div class="vis-content">
+                    <h3>Keragaman Budaya dalam Angka</h3>
+                    <p>Data budaya Indonesia menunjukkan kekayaan yang luar biasa. Dengan lebih dari 1.300 suku bangsa dan 700 bahasa daerah, Indonesia menjadi salah satu negara dengan keragaman budaya terbesar di dunia.</p>
+                    <p>Visualisasi di samping menunjukkan distribusi beberapa elemen budaya utama di Indonesia berdasarkan wilayah. Setiap bar mewakili kelompok pulau utama dan menunjukkan jumlah elemen budaya yang terdaftar secara resmi.</p>
+                    <p>Pendekatan minimalis dalam visualisasi data memungkinkan pengguna untuk memahami kompleksitas budaya Indonesia dengan cara yang sederhana namun bermakna.</p>
+                </div>
+                <div class="vis-chart">
+                    <h3 class="chart-title">Distribusi Elemen Budaya per Wilayah</h3>
+                    <div class="chart-container">
+                        <div class="chart">
+                            <!-- Chart bars will be dynamically generated -->
+                        </div>
+                    </div>
+                    
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color color-1"></div>
+                            <div class="legend-text">Tarian Tradisional</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color color-2"></div>
+                            <div class="legend-text">Bahasa Daerah</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color color-3"></div>
+                            <div class="legend-text">Tradisi Budaya</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang <span>Proyek</span></h2>
+            <p class="section-subtitle">Informasi tentang pembuat website dan konsep di balik proyek ini.</p>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sekolah">
+                </div>
+                <div class="about-text">
+                    <h3 class="about-title">Konsep Desain</h3>
+                    <p class="about-desc">Website ini mengusung tema "Data dalam Seni dan Kreativitas" dengan pendekatan minimalis dan fungsional. Setiap elemen dirancang dengan tujuan yang jelas, menciptakan pengalaman pengguna yang bersih dan efektif.</p>
+                    <p class="about-desc">Prinsip "Less is More" diterapkan melalui penggunaan white space, tipografi bersih, dan kombinasi warna yang harmonis. Desain responsif memastikan pengalaman optimal di semua perangkat.</p>
+                    
+                    <div class="creator-info">
+                        <div class="creator-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="creator-details">
+                            <h4>Nama Programmer</h4>
+                            <p>Siswa Kelas XII, SMK Negeri 1 Teknologi</p>
+                            <p>Sumber Data: Kementerian Pendidikan dan Kebudayaan RI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">BhinekaTunggalIka</div>
+                    <p class="footer-desc">Website ini dibuat untuk menampilkan keragaman budaya Indonesia melalui pendekatan data dan desain minimalis, sesuai dengan semangat Bhineka Tunggal Ika.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h3 class="footer-title">Navigasi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#provinces">Provinsi</a></li>
+                        <li><a href="#visualization">Visualisasi</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h3 class="footer-title">Sumber Data</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Kemendikbud RI</a></li>
+                        <li><a href="#">Badan Pusat Statistik</a></li>
+                        <li><a href="#">Arsip Nasional</a></li>
+                        <li><a href="#">Perpustakaan Nasional</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Bhineka Tunggal Ika - Data dalam Seni dan Kreativitas. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample province data (in a real application, this would come from an API)
+        const provinces = [
+            {
+                id: 1,
+                name: "Jawa Barat",
+                capital: "Bandung",
+                population: 48277942,
+                area: 35377.76,
+                island: "Jawa",
+                culture: "Sunda",
+                dance: "Jaipong",
+                house: "Imah Badak Heuay",
+                image: "jabar"
+            },
+            {
+                id: 2,
+                name: "Bali",
+                capital: "Denpasar",
+                population: 4316400,
+                area: 5780.06,
+                island: "Bali",
+                culture: "Bali",
+                dance: "Pendet",
+                house: "Bale",
+                image: "bali"
+            },
+            {
+                id: 3,
+                name: "Sumatera Utara",
+                capital: "Medan",
+                population: 14780000,
+                area: 72981.23,
+                island: "Sumatera",
+                culture: "Batak",
+                dance: "Tortor",
+                house: "Rumah Bolon",
+                image: "sumut"
+            },
+            {
+                id: 4,
+                name: "Sulawesi Selatan",
+                capital: "Makassar",
+                population: 9046000,
+                area: 46717.48,
+                island: "Sulawesi",
+                culture: "Bugis",
+                dance: "Pattudu",
+                house: "Tongkonan",
+                image: "sulsel"
+            },
+            {
+                id: 5,
+                name: "Papua Barat",
+                capital: "Manokwari",
+                population: 1134068,
+                area: 102955.15,
+                island: "Papua",
+                culture: "Papua",
+                dance: "Yospan",
+                house: "Honai",
+                image: "pabar"
+            },
+            {
+                id: 6,
+                name: "Kalimantan Timur",
+                capital: "Samarinda",
+                population: 3701100,
+                area: 129066.64,
+                island: "Kalimantan",
+                culture: "Dayak",
+                dance: "Gantar",
+                house: "Lamin",
+                image: "kaltim"
+            }
+        ];
+
+        // Cultural elements data for visualization
+        const culturalData = [
+            { region: "Sumatera", dances: 87, languages: 52, traditions: 120 },
+            { region: "Jawa", dances: 68, languages: 15, traditions: 95 },
+            { region: "Kalimantan", dances: 42, languages: 74, traditions: 88 },
+            { region: "Sulawesi", dances: 58, languages: 62, traditions: 105 },
+            { region: "Bali & Nusa Tenggara", dances: 47, languages: 28, traditions: 76 },
+            { region: "Maluku & Papua", dances: 63, languages: 271, traditions: 92 }
+        ];
+
+        // DOM elements
+        const provincesGrid = document.querySelector('.provinces-grid');
+        const chartContainer = document.querySelector('.chart');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Generate province cards
+        function generateProvinceCards(provinces) {
+            provincesGrid.innerHTML = '';
+            
+            provinces.forEach(province => {
+                const card = document.createElement('div');
+                card.className = 'province-card';
+                
+                // Format population number
+                const populationFormatted = province.population > 1000000 
+                    ? `${(province.population / 1000000).toFixed(1)} jt` 
+                    : `${(province.population / 1000).toFixed(1)} rb`;
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <img src="https://source.unsplash.com/random/600x400/?${province.image},indonesia" alt="${province.name}">
+                        <div class="province-name">${province.name}</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">${populationFormatted}</div>
+                                <div class="stat-label">Penduduk</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${province.area.toLocaleString()} km²</div>
+                                <div class="stat-label">Luas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${province.culture}</div>
+                                <div class="stat-label">Budaya</div>
+                            </div>
+                        </div>
+                        <p class="card-desc">Ibukota: ${province.capital} | Tarian: ${province.dance} | Rumah Adat: ${province.house}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span>Pulau: ${province.island}</span>
+                        <button class="btn btn-outline">Detail</button>
+                    </div>
+                `;
+                
+                provincesGrid.appendChild(card);
+            });
+        }
+
+        // Generate chart bars with the corrected structure
+        function generateChartBars() {
+            // Find max value for scaling
+            const maxValue = Math.max(...culturalData.map(item => 
+                Math.max(item.dances, item.languages, item.traditions)
+            ));
+            
+            chartContainer.innerHTML = '';
+            
+            culturalData.forEach(item => {
+                const dancesHeight = (item.dances / maxValue) * 100;
+                const languagesHeight = (item.languages / maxValue) * 100;
+                const traditionsHeight = (item.traditions / maxValue) * 100;
+                
+                const barGroup = document.createElement('div');
+                barGroup.className = 'bar-group';
+                
+                barGroup.innerHTML = `
+                    <div class="bars">
+                        <div class="bar" style="height: ${dancesHeight}%">
+                            <div class="bar-value">${item.dances}</div>
+                            <div class="bar-label">Tari</div>
+                        </div>
+                        <div class="bar" style="height: ${languagesHeight}%">
+                            <div class="bar-value">${item.languages}</div>
+                            <div class="bar-label">Bahasa</div>
+                        </div>
+                        <div class="bar" style="height: ${traditionsHeight}%">
+                            <div class="bar-value">${item.traditions}</div>
+                            <div class="bar-label">Adat</div>
+                        </div>
+                    </div>
+                    <div class="region-label">${item.region}</div>
+                `;
+                
+                chartContainer.appendChild(barGroup);
+            });
+        }
+
+        // Filter provinces by island
+        function filterProvinces(island) {
+            if (island === 'Semua') {
+                generateProvinceCards(provinces);
+            } else {
+                const filtered = provinces.filter(province => province.island === island);
+                generateProvinceCards(filtered);
+            }
+        }
+
+        // Initialize the page
+        function init() {
+            generateProvinceCards(provinces);
+            generateChartBars();
+            
+            // Add event listeners to filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    // Filter provinces
+                    filterProvinces(button.textContent);
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
