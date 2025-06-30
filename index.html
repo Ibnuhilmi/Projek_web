@@ -116,12 +116,6 @@
             display: flex;
             list-style: none;
             gap: 2rem;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .nav-links.active {
-            transform: translateX(0);
         }
 
         .nav-links a {
@@ -685,15 +679,13 @@
                 position: fixed;
                 top: 70px;
                 right: -100%;
-                width: 100%; /* Ganti dari 70% ke 100% */
-                height: calc(100vh - 70px);
-                background-color: var(--white);
                 flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-                padding: 2rem 1rem;
+                background-color: var(--white);
+                width: 70%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
                 transition: var(--transition);
-                z-index: 999;
+                box-shadow: var(--shadow-lg);
             }
             
             .nav-links.active {
@@ -792,9 +784,9 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">Bhineka<span>Tunggal</span>Ika</a>
-                    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <ul class="nav-links">
                     <li><a href="#home">Beranda</a></li>
                     <li><a href="#provinces">Provinsi</a></li>
@@ -1163,11 +1155,6 @@
             // Mobile menu toggle
             mobileMenuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
-                const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-                mobileMenuBtn.setAttribute('aria-expanded', !expanded);
-                mobileMenuBtn.innerHTML = expanded 
-                ? '<i class="fas fa-bars"></i>' 
-                : '<i class="fas fa-times"></i>';
             });
             
             // Close mobile menu when clicking a link
