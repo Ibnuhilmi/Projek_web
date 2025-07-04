@@ -217,17 +217,101 @@ function init() {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 70,
-                    behavior: 'smooth'
-                });
+            const href = this.getAttribute('href');
+            // Cegah error jika href adalah "#" atau tidak valid
+            if (href && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
 }
+
+
+// fitur aksebilitas
+let accessibilityEnabled = false;
+let zoomLevel = 1;
+const synth = window.speechSynthesis;
+const accessBtn = document.getElementById('accessibility-toggle');
+const zoomInBtn = document.getElementById('zoom-in');
+const zoomOutBtn = document.getElementById('zoom-out');
+
+function speakText(text) {
+    if (!accessibilityEnabled || !synth) return;
+    synth.cancel();
+    synth.speak(new SpeechSynthesisUtterance(text));
+}
+
+function addAccessibility() {
+    document.querySelectorAll('a, button, img, p, h1, h2, h3, h4, span')
+    .forEach(el => {
+        el._speakHandler = () => {
+        const label = el.alt
+                    || el.getAttribute('aria-label')
+                    || el.innerText.trim()
+                    || 'Elemen diklik';
+        speakText(label);
+        };
+        el.addEventListener('click', el._speakHandler);
+    });
+    document.body.classList.add('accessibility-mode');
+    accessBtn.classList.add('active');
+    accessBtn.setAttribute('aria-label','Fitur Disabilitas aktif');
+}
+
+function removeAccessibility() {
+    document.querySelectorAll('a, button, img, p, h1, h2, h3, h4, span')
+    .forEach(el => {
+        el.removeEventListener('click', el._speakHandler);
+    });
+    document.body.classList.remove('accessibility-mode');
+    accessBtn.classList.remove('active');
+    accessBtn.setAttribute('aria-label','Fitur Disabilitas mati');
+    synth.cancel();
+    // reset zoom
+    zoomLevel = 1;
+    document.body.style.zoom = zoomLevel;
+}
+
+accessBtn.addEventListener('click', () => {
+    accessibilityEnabled = !accessibilityEnabled;
+    if (accessibilityEnabled) {
+        addAccessibility();
+        alert("Fitur disabilitas diaktifkan.");
+        speakText("Fitur disabilitas diaktifkan.");
+    } else {
+        removeAccessibility();
+        alert("Fitur disabilitas dinonaktifkan.");
+        speakText("Fitur disabilitas dinonaktifkan.");
+    }
+});
+
+// Zoom controls
+zoomInBtn.addEventListener('click', () => {
+    zoomLevel = Math.min(zoomLevel + 0.1, 2);
+    document.body.style.zoom = zoomLevel;
+});
+zoomOutBtn.addEventListener('click', () => {
+    zoomLevel = Math.max(zoomLevel - 0.1, 0.5);
+    document.body.style.zoom = zoomLevel;
+});
+
+// Notifikasi otomatis saat load (masih ada di kode sebelumnya)
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        alert("🔊 Website ini mendukung fitur disabilitas. Klik 🔊 di pojok kanan bawah untuk mengaktifkan.");
+        const info = new SpeechSynthesisUtterance(
+            "Website ini mendukung fitur disabilitas. Klik ikon speaker di pojok kanan bawah untuk mengaktifkan."
+        );
+        window.speechSynthesis.speak(info);
+    }, 1000);
+});
 
 // Run initialization when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);

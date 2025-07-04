@@ -27,6 +27,69 @@ body {
     overflow-x: hidden;
 }
 
+/*fitur aksebilitas Floating tombol akses */
+.floating-access-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+    cursor: pointer;
+    transition: var(--transition);
+}
+/* Indikasi saat aktif */
+.floating-access-btn.active {
+    background-color: var(--secondary);
+}
+/* Hover */
+.floating-access-btn:hover {
+    background-color: #0e3ec9;
+}
+
+/* Floating tombol zoom */
+.floating-zoom-btn {
+    position: fixed;
+    right: 20px;
+    background-color: var(--primary-light);
+    color: var(--dark);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-md);
+    z-index: 998;
+    cursor: pointer;
+    transition: var(--transition);
+    display: none;                /* tersembunyi default */
+}
+/* Zoom out di atas Zoom in */
+.floating-zoom-btn.zoom-out { bottom: 140px; }
+.floating-zoom-btn.zoom-in  { bottom: 90px; }
+/* Muncul hanya saat mode aksesibilitas */
+body.accessibility-mode .floating-zoom-btn {
+    display: block;
+}
+.floating-zoom-btn:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+/* (Opsional) Perbesar teks sedikit di mode akses */
+body.accessibility-mode {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+
+
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
@@ -382,7 +445,8 @@ section {
 .chart-container {
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 20px;
+    overflow-y: visible;
+    padding-bottom: 40px;
 }
 
 .chart {
@@ -405,9 +469,10 @@ section {
 
 .bars {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     height: 100%;
     align-items: flex-end;
+    justify-content: space-around;
     margin-bottom: 30px;
 }
 
@@ -423,7 +488,7 @@ section {
 
 .bar-value {
     position: absolute;
-    top: -25px;
+    top: -3px;
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--dark);
@@ -442,7 +507,7 @@ section {
 
 .region-label {
     position: absolute;
-    bottom: -50px;
+    bottom: -30px;
     font-size: 0.9rem;
     color: var(--dark);
     font-weight: 600;
@@ -756,12 +821,17 @@ footer {
     .bar {
         width: 25px;
     }
+
+    .bars {
+        gap: 0.6rem;
+    }
     
     .bar-value {
-        font-size: 0.8rem;
+        top: -2px;
+        font-size: 0.75rem;
     }
     
     .bar-label, .region-label {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 }
